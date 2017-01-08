@@ -3,24 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/**
- *
- * @author Sakshi
- */
-import java.util.*;
-  
-public class Stack 
-{
-//IMPLEMENTING A STACK USING ARRAYS
-    int MaxLen = 5;
-    char []a = new char[5];
-    int top = -1;
+package cracking;
+// @author sakshi
+public class Stack {
+     char []a = new char[10];
+     int top;
+     int max =10;
+    Stack()
+    {
+        top = -1;
+    }
+    char peek()
+    {
+        if(top == -1)
+        {
+            return '#';    
+        }
+        else
+        {
+            return a[top];
+        }        
+    }
     void push(char num)
     {
-        if(top == MaxLen-1)
+        if(top == max)
         {
-            System.out.println("Stack overflow");
+            System.out.println("Stack is full");
         }
         else
         {
@@ -33,31 +41,26 @@ public class Stack
         if(top == -1)
         {
             System.out.println("Stack is empty");
+            return 0;
         }
-        else
-        {
-            return a[top--];
-        }
-        return '#';
+        return a[top--]; 
     }
     void display()
     {
-        for(int i = 0; i<=top;i++)
+        for(int i = top;i >= 0; i--)
         {
             System.out.println(a[i]);
         }
     }
     public static void main(String args[])
     {
-        Stack s = new Stack();
-        s.push('a');
-        s.push('b');
-        s.push('c');
-        s.pop();
-        s.push('d');
-        s.push('e');
-
-        
-        s.display();
+        Stack obj = new Stack();
+        obj.push('a');
+        obj.push('b');
+        obj.push('c');
+        obj.pop();
+        obj.push('d');
+        obj.display();
+        obj.peek();
     }
 }
